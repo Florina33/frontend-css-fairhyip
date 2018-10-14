@@ -1,39 +1,137 @@
-
 body {
     background-image: url("../images/bg_body.jpg");
     font-family: Verdana, Geneva, sans-serif;
     font-weight: normal;
     font-style: normal;
     font-size: 11px;
-    margin: 0;
-    padding: 0;
+
     min-height: 100%;
     height: 100%;
-}
-.wrapper {
     max-width: 1000px;
-    width: 100%
+    width: 100%;
     margin: 0 auto;
 }
+body * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* по умолчанию стоит */
+    /*box-sizing: content-box;*/ 
+    /* не вычитает из ширины блока padding и border, идет во внутрь, вычитает изнутри*/
+    /* box-sizing: border-box; */
+}
+.wrapper {
+    display: block;
+    padding: 40px 0;
+}
+
 h1, h2, p {
-    font-family: Verdana, Geneva, sans-serif;
     font-weight: normal;
     font-style: normal;
 }
 h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 22px;
     color: #ead4aa;
-    padding-bottom: 25px;
+    padding-bottom: 23px;
 }
 h2 {
+   font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     color: #fff68d;
     padding-bottom: 20px;
 }
 p {
+    font-family: Verdana, Geneva, sans-serif;
     font-size: 11px;
     color: #d7cfc8;
     padding-bottom: 10px;
+}
+
+/*************** HEADER ***************/
+
+.header {
+    /* display: block; */
+    display: flex;
+    width: auto; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.header li {
+    display: inline-block;
+    float:  /* отменяет любое действие display: inline-block; */;
+    vertical-align: baseline; /* обязательно должно присутствовать рядом с display: inline-block; */
+}
+
+.lang-list {
+    order: 1;
+    width: 50%;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+.lang-list li {
+    border-right: 1px solid #fff;
+    padding-right: 5px;
+    color: #e8d1a4
+}
+.lang-list li:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+.lang-list .lang-item a {
+    color: #fff;
+}
+.lang-list .lang-item:hover a,
+.lang-list .lang-item:active a,
+.lang-list .lang-item:focus a {
+    color: #e8d1a4;
+    text-decoration: none;
+}
+
+.auth {
+    order: 2;
+    width: 50%;
+    text-align: right;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+.auth .auth-link {
+    border-right: 1px solid #fff;
+    padding-right: 5px;
+    text-transform: lowercase;
+}
+.auth .auth-link:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+.auth .auth-link a {
+    color: #fff;
+}
+.auth .auth-link:hover a,
+.auth .auth-link:active a,
+.auth .auth-link.signin a,
+.auth .auth-link:focus a {
+    color: #e8d1a4;
+    text-decoration: none;
+}
+
+
+.logo {
+    display: inline-block;
+    order: 3;
+    padding-left: 30px;
+}
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*************** MAIN MENU ***************/
+
+.mainmenu {  
+    order: 4;  
+    align-self: flex-end;
+    padding-top: 15px;
 }
 .mainmenu .menu-list {    
     /* max-width: 703px; */
@@ -42,34 +140,36 @@ p {
     background: -webkit-linear-gradient(top, #ffffff 0%,#eeedeb 100%);
     background: linear-gradient(to bottom, #ffffff 0%,#eeedeb 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeedeb',GradientType=0 );
+    border-radius: 6px;
 }
-.mainmenu .menu-list .menu-item {
+.mainmenu .menu-item {
     display: inline-block;
     vertical-align: middle;
     position: relative;
     height: 39px;
-    padding: 0 2%;
-    padding: 0 25px;
     
-    font-family: Verdana, Geneva, sans-serif;
-    font-weight: normal;
-    font-style: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 14px;
+    line-height: 47px;
     box-sizing: border-box;
 }
-.mainmenu .menu-list .menu-item:hover,
-.mainmenu .menu-list .menu-item:active { 
+.mainmenu .menu-item:hover,
+.mainmenu .menu-item:active,
+.mainmenu .menu-item.active { 
     background-image: url("../images/bg_menu-item-active.png");
     background-repeat: no-repeat;
     background-size: cover;
-    /* background: url("../image/bg_menu-item-active_2.jpg");
-    background-repeat: repeat;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #dad7d5; */
 }
-.mainmenu .menu-list .menu-item a {
-     color: #461500;
+.mainmenu .menu-item:first-child:hover,
+.mainmenu .menu-item:first-child:active { 
+    border-radius: 6px 0 0 6px;
+}
+.mainmenu .menu-item:last-child:hover,
+.mainmenu .menu-item:last-child:active { 
+    border-radius: 0 6px 6px 0;
+}
+.mainmenu .menu-item a {
+    color: #461500;
     display: inline-block;
     vertical-align: middle;
     height: 100%;
@@ -79,13 +179,70 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-   
+    
+    /* padding: 0 25px; */
+    /* padding: 0 40% 0 0; */
+    padding: 0 4vh;
 }
 
+
+/*************** MAIN CONTENT ***************/
+
 .promo {
-    font-family: Verdana, Geneva, sans-serif;
-    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: italic;
     font-size: 14px;
+    line-height: 22px;
     color: #f9da5a;
+    background: url(../images/bg_about.png) no-repeat 59px center, 
+                url(../images/bg_promo.png) repeat;
+    padding: 25px 20px 25px 146px;
+    margin-bottom: 43px;
+    border-radius: 10px;
+}
+
+.article {
+    position: relative;
+    padding: 0 20px 10px 146px;
+}
+.article img {
+    position: absolute;
+    left: 20px;
+    top: 5px;
+}
+
+/*************** FOOTER ***************/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-top: 40px;
+    border-top: 1px solid #d7b649;
+}
+.copyright {
+    color: #f9da5a;
+    padding-left: 12px;
+}
+.footermenu .menu-list {
+    padding-right: 6px;
+}
+.footermenu .menu-item {
+    display:  inline-block;
+    font-size: 11px;
+    padding: 0 9px;
+    margin-bottom: 8px;
+    border-right: 1px solid #fff;
+}
+.footermenu .menu-item:last-child {
+    border-right: none;
+}
+.footermenu .menu-item a {
+    color: #fff;
+    text-decoration: none;
+}
+.footermenu .menu-item:hover a,
+.footermenu .menu-item:active a,
+.footermenu .menu-item:focus a {
+    color: #e8d1a4;
 }
