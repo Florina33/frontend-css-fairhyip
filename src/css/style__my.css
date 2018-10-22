@@ -9,8 +9,13 @@ body {
 
     min-height: 100%;
     height: 100%;
-    max-width: 1000px;
+/* 
+    надо ограничить сайт до минимальной ширины 1000px. 
+    Он не предназначался для маленьких экранов. 
+    Хоть некоторые элеметны и адаптируются без проблем.  */
+    /* max-width: 1000px; */
     width: 100%;
+    min-width: 1000px;
     margin: 0 auto;
 }
 body * {
@@ -42,8 +47,9 @@ h2 {
     color: #fff68d;
     padding-bottom: 20px;
 }
+/* Для абзацев можно не назначать шрифт, т.к. они наследуют у глобальные */
 p {
-    font-family: Verdana, Geneva, sans-serif;
+    /* font-family: Verdana, Geneva, sans-serif; */
     font-size: 11px;
     color: #d7cfc8;
     padding-bottom: 10px;
@@ -69,7 +75,9 @@ img {
 }
 .header li {
     display: inline-block;
-    float:  /* отменяет любое действие display: inline-block; */;
+    /* Нашёл одно свойство `float:` без значения. Как бы это не сломало парсинг */
+    /* При использовании **flex-box** ни **inline-block**, ни **float** не нужны */
+    /* float -  отменяет любое действие display: inline-block; */;
     vertical-align: baseline; /* обязательно должно присутствовать рядом с display: inline-block; */
 }
 
@@ -80,7 +88,7 @@ img {
     padding-bottom: 10px;
 }
 .lang-list li {
-    display: inline-block;
+    /* display: inline-block; */
     border-right: 1px solid #fff;
     line-height: 10px;
     padding: 0 6px 0 2px;
@@ -131,7 +139,7 @@ img {
 }
 
 .logo {
-    display: inline-block;
+    /* display: inline-block; */
     order: 3;
     padding-left: 30px;
 }
@@ -157,8 +165,8 @@ img {
     padding-left: 4px;
 }
 .mainmenu .menu-item {
-    display: inline-block;
-    vertical-align: middle;
+    /* display: inline-block; */
+    /* vertical-align: middle; */
     position: relative;
     height: 39px;
     
@@ -184,16 +192,15 @@ img {
     border-radius: 0 6px 6px 0;
 }
 .mainmenu .menu-item a {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     color: #461500;
     vertical-align: middle;
     height: 100%;
     height: 39px;
     text-decoration: none;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
     
     /* padding: 0 25px; */
     /* padding: 0 40% 0 0; */
@@ -257,8 +264,9 @@ footer {
     color: #fff;
     text-decoration: none;
 }
+/* элемент **<li>** никогда не окажется в фокусе т.к. он не интерактивный */
+/* .footermenu .menu-item:focus a  */
 .footermenu .menu-item:hover a,
-.footermenu .menu-item:active a,
-.footermenu .menu-item:focus a {
+.footermenu .menu-item:active a {
     color: #e8d1a4;
 }
