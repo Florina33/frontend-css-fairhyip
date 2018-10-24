@@ -73,13 +73,15 @@ img {
     justify-content: space-between;
     margin-bottom: 40px;
 }
-.header li {
-    display: inline-block;
+/*** только заметил `.header li` . Этот селектор меня настораживает. Не понятно что имеется ввиду */
+/* .header li { */
+    /* display: inline-block; */
     /* Нашёл одно свойство `float:` без значения. Как бы это не сломало парсинг */
     /* При использовании **flex-box** ни **inline-block**, ни **float** не нужны */
-    /* float -  отменяет любое действие display: inline-block; */;
-    vertical-align: baseline; /* обязательно должно присутствовать рядом с display: inline-block; */
-}
+    /* float - отменяет любое действие display: inline-block; */
+    /* обязательно должно присутствовать рядом с display: inline-block; */
+    /* vertical-align: baseline;  */
+/* } */
 
 .lang-list {
     order: 1;
@@ -88,7 +90,8 @@ img {
     padding-bottom: 10px;
 }
 .lang-list li {
-    /* display: inline-block; */
+    display: inline-block;
+    vertical-align: baseline; 
     border-right: 1px solid #fff;
     line-height: 10px;
     padding: 0 6px 0 2px;
@@ -117,6 +120,7 @@ img {
 }
 .auth .auth-link {
     display: inline-block;
+    vertical-align: baseline; 
     border-right: 1px solid #fff;
     line-height: 10px;
     padding: 0 6px 0 2px;
@@ -132,8 +136,7 @@ img {
 /* .auth .auth-link:hover a, */
 /* .auth .auth-link:focus a */
 /* .auth .auth-link:active a, */
-.auth .auth-link.signin a
-{
+.auth .auth-link.signin a {
     color: #e8d1a4;
     /* text-decoration: none; */
 }
@@ -165,8 +168,8 @@ img {
     padding-left: 4px;
 }
 .mainmenu .menu-item {
-    /* display: inline-block; */
-    /* vertical-align: middle; */
+    display: inline-block;
+    vertical-align: baseline; 
     position: relative;
     height: 39px;
     
